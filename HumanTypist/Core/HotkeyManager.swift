@@ -73,22 +73,21 @@ final class HotkeyManager {
         let hasControl = flags.contains(.maskControl)
         let hasOption = flags.contains(.maskAlternate)
 
-        guard hasControl && hasOption else { return }
+        // Only log when Ctrl+Alt modifiers are present (reduces noise during typing)
+        if hasControl && hasOption {
+            NSLog("[HotkeyManager] KEY: keycode=%lld ctrl=%@ opt=%@", keyCode, "\(hasControl)", "\(hasOption)")
+        }
 
-        NSLog("[HotkeyManager] Key pressed: keycode=%lld ctrl=%@ opt=%@", keyCode, "\(hasControl)", "\(hasOption)")
+        guard hasControl && hasOption else { return }
 
         switch keyCode {
         case 0x23: // P = 35 decimal
-            NSLog("[HotkeyManager] matched case 0x23 (P), calling onStart")
             self.onStart?()
-        case 0x1F: // S = 31 decimal
-            NSLog("[HotkeyManager] matched case 0x1F (S), calling onStop")
+        case 0x1F, 0x01: // S = 31 or 1 (different keyboard layouts report different keycodes)
             self.onStop?()
         case 0x0F: // R = 15 decimal
-            NSLog("[HotkeyManager] matched case 0x0F (R), calling onReload")
             self.onReload?()
         default:
-            NSLog("[HotkeyManager] no match for keycode=%lld, falling through", keyCode)
             break
         }
     }
