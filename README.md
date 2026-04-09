@@ -5,10 +5,23 @@ A macOS menu bar app that types clipboard text into any text field with human-li
 ## Requirements
 
 - macOS
-- Xcode (for building)
+- Xcode (for building from source)
 - Accessibility permission (required for keyboard simulation)
 
-## Build
+## Installation
+
+1. Download `HumanTypist-x.x.x.zip` from the [latest release](https://github.com/benyue1978/human-typist/releases/latest)
+2. Unzip the archive
+3. Move `HumanTypist.app` to `/Applications`
+4. Remove the quarantine attribute so macOS doesn't block the app:
+   ```bash
+   xattr -d com.apple.quarantine /Applications/HumanTypist.app
+   ```
+5. Open `HumanTypist.app` from `/Applications`
+
+If macOS still shows a warning about moving to trash, run the xattr command again and try.
+
+## Build from Source
 
 ```bash
 xcodebuild -project HumanTypist/HumanTypist.xcodeproj -scheme HumanTypist -configuration Release build
