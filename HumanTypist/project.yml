@@ -24,8 +24,37 @@ targets:
       - path: App
       - path: UI
       - path: Core
+        excludes:
+          - "*Tests.swift"
       - path: Resources
     settings:
       base:
         PRODUCT_NAME: HumanTypist
         GENERATE_INFOPLIST_FILE: NO
+
+  HumanTypistTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Core/PreferencesTests.swift
+        buildPhase: sources
+      - path: Core/Preferences.swift
+        buildPhase: sources
+      - path: Core/TypingEngineTests.swift
+        buildPhase: sources
+      - path: Core/TypingEngine.swift
+        buildPhase: sources
+      - path: Core/HotkingTests.swift
+        buildPhase: sources
+      - path: Core/HotkeyManager.swift
+        buildPhase: sources
+      - path: Core/ClipboardMonitorTests.swift
+        buildPhase: sources
+      - path: Core/ClipboardMonitor.swift
+        buildPhase: sources
+    dependencies:
+      - sdk: XCTest.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.humantypist.app.tests
+        GENERATE_INFOPLIST_FILE: YES

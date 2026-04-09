@@ -7,22 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053EF4074E4BB903F86A052D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F40042CC44FAC574487F420 /* XCTest.framework */; };
+		0CF09BE75E630A8E74513A85 /* GeneralTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FD051FE17CB6878D97D90A /* GeneralTab.swift */; };
+		10EEB9D28B3C80FDF26A9779 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AF47F95FAB33FB31A85A5C /* Preferences.swift */; };
+		140E93736E38C9DB9CC7CCF0 /* TypingParamsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C51FE424E4F31C29384FFC /* TypingParamsTab.swift */; };
+		224F37D5008D238C1211628A /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE2DCC0C2B8ED336869A3A /* ClipboardMonitor.swift */; };
+		271DAFBCD9678E9C9E5E30C2 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4309BC7AC3CAB81C966CD4D /* PreferencesTests.swift */; };
 		321E71D728D9A4E1605622D8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494587911F95CCEAFAF266B7 /* main.swift */; };
+		452E148178A17F5E69748856 /* TypingEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B4E1F6424D753B1E43F33 /* TypingEngineTests.swift */; };
+		563CDC5AA8D888D6C702C5D7 /* HotkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4720C784AAD7735B350BBD0D /* HotkingTests.swift */; };
+		7E3D78030434DC0A178C159B /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE2DCC0C2B8ED336869A3A /* ClipboardMonitor.swift */; };
 		99164DAD106242D812A48B27 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640D757C25D28B3274DCEF78 /* StatusBarController.swift */; };
+		ADFDA77E49986D2C78A39B94 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2075F78725635F92B2FD959 /* HotkeyManager.swift */; };
+		B53C178109396328F198D4C2 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AF47F95FAB33FB31A85A5C /* Preferences.swift */; };
+		CC53022B1D6A34B9CCAD8769 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2075F78725635F92B2FD959 /* HotkeyManager.swift */; };
+		CF9D73262DC74943A5A88E06 /* ClipboardMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3D7F36D3C66CB674CD406 /* ClipboardMonitorTests.swift */; };
+		D4E5C725663684A82701B187 /* TypingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97591DCF0D84BB49303E2B4 /* TypingEngine.swift */; };
 		E3B286FF5A2B5D972882468B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156F5BD366F622FDD37358B /* AppDelegate.swift */; };
+		EAB9063237607170F4A476C1 /* ShortcutsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A6184B413606285CA5179 /* ShortcutsTab.swift */; };
 		F24F9976B097F851A008BF93 /* TypingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97591DCF0D84BB49303E2B4 /* TypingEngine.swift */; };
+		F675BD08A0A894E86CB74E0E /* TypingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF07C85CFD253C0ECC926BD /* TypingPanel.swift */; };
 		FC51502E01B1A03A0F6C8731 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3415181BCD965A0DB00D96DF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E6B4E1F6424D753B1E43F33 /* TypingEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingEngineTests.swift; sourceTree = "<group>"; };
+		0EF07C85CFD253C0ECC926BD /* TypingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingPanel.swift; sourceTree = "<group>"; };
+		16E3D7F36D3C66CB674CD406 /* ClipboardMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitorTests.swift; sourceTree = "<group>"; };
+		2F40042CC44FAC574487F420 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = System/Library/Frameworks/XCTest.framework; sourceTree = SDKROOT; };
 		3415181BCD965A0DB00D96DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4720C784AAD7735B350BBD0D /* HotkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkingTests.swift; sourceTree = "<group>"; };
 		494587911F95CCEAFAF266B7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5018EF52ED11B25F99F27E56 /* HumanTypist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HumanTypist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		640D757C25D28B3274DCEF78 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		64EE2DCC0C2B8ED336869A3A /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
+		67C51FE424E4F31C29384FFC /* TypingParamsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingParamsTab.swift; sourceTree = "<group>"; };
+		A4309BC7AC3CAB81C966CD4D /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		A97591DCF0D84BB49303E2B4 /* TypingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingEngine.swift; sourceTree = "<group>"; };
 		AB6CB367706FD63DEC57D24A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B2075F78725635F92B2FD959 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
+		B8FD051FE17CB6878D97D90A /* GeneralTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTab.swift; sourceTree = "<group>"; };
+		C4AF47F95FAB33FB31A85A5C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		F12A6184B413606285CA5179 /* ShortcutsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsTab.swift; sourceTree = "<group>"; };
 		F156F5BD366F622FDD37358B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4F1AC9F5506868AF9B9B313 /* HumanTypistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HumanTypistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		631C2BF3DFC0B05A13F0089E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				053EF4074E4BB903F86A052D /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0217AF336308A8C54D9B384A /* Resources */ = {
@@ -50,6 +90,7 @@
 				6C22AB8F79B51FEE97EDEFB7 /* Core */,
 				0217AF336308A8C54D9B384A /* Resources */,
 				B2050D2C87ABBF5226E42847 /* UI */,
+				C23A8F09BC40C78D13E5CD3E /* Frameworks */,
 				4EA3B9AF7B2E185BD65D5AD9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5018EF52ED11B25F99F27E56 /* HumanTypist.app */,
+				F4F1AC9F5506868AF9B9B313 /* HumanTypistTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,7 +107,14 @@
 		6C22AB8F79B51FEE97EDEFB7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				64EE2DCC0C2B8ED336869A3A /* ClipboardMonitor.swift */,
+				16E3D7F36D3C66CB674CD406 /* ClipboardMonitorTests.swift */,
+				B2075F78725635F92B2FD959 /* HotkeyManager.swift */,
+				4720C784AAD7735B350BBD0D /* HotkingTests.swift */,
+				C4AF47F95FAB33FB31A85A5C /* Preferences.swift */,
+				A4309BC7AC3CAB81C966CD4D /* PreferencesTests.swift */,
 				A97591DCF0D84BB49303E2B4 /* TypingEngine.swift */,
+				0E6B4E1F6424D753B1E43F33 /* TypingEngineTests.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -73,9 +122,21 @@
 		B2050D2C87ABBF5226E42847 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B8FD051FE17CB6878D97D90A /* GeneralTab.swift */,
+				F12A6184B413606285CA5179 /* ShortcutsTab.swift */,
 				640D757C25D28B3274DCEF78 /* StatusBarController.swift */,
+				0EF07C85CFD253C0ECC926BD /* TypingPanel.swift */,
+				67C51FE424E4F31C29384FFC /* TypingParamsTab.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		C23A8F09BC40C78D13E5CD3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F40042CC44FAC574487F420 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +159,24 @@
 			productName = HumanTypist;
 			productReference = 5018EF52ED11B25F99F27E56 /* HumanTypist.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D6D4A54CD09BBE3F2269E94A /* HumanTypistTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 039A28E65E487DC693BE04FE /* Build configuration list for PBXNativeTarget "HumanTypistTests" */;
+			buildPhases = (
+				8DB0CDA59C2299778B5CA017 /* Sources */,
+				631C2BF3DFC0B05A13F0089E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HumanTypistTests;
+			packageProductDependencies = (
+			);
+			productName = HumanTypistTests;
+			productReference = F4F1AC9F5506868AF9B9B313 /* HumanTypistTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -125,6 +204,7 @@
 			projectRoot = "";
 			targets = (
 				16073B34A122E8F20F2613FE /* HumanTypist */,
+				D6D4A54CD09BBE3F2269E94A /* HumanTypistTests */,
 			);
 		};
 /* End PBXProject section */
@@ -146,9 +226,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B286FF5A2B5D972882468B /* AppDelegate.swift in Sources */,
+				224F37D5008D238C1211628A /* ClipboardMonitor.swift in Sources */,
+				0CF09BE75E630A8E74513A85 /* GeneralTab.swift in Sources */,
+				ADFDA77E49986D2C78A39B94 /* HotkeyManager.swift in Sources */,
+				10EEB9D28B3C80FDF26A9779 /* Preferences.swift in Sources */,
+				EAB9063237607170F4A476C1 /* ShortcutsTab.swift in Sources */,
 				99164DAD106242D812A48B27 /* StatusBarController.swift in Sources */,
 				F24F9976B097F851A008BF93 /* TypingEngine.swift in Sources */,
+				F675BD08A0A894E86CB74E0E /* TypingPanel.swift in Sources */,
+				140E93736E38C9DB9CC7CCF0 /* TypingParamsTab.swift in Sources */,
 				321E71D728D9A4E1605622D8 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB0CDA59C2299778B5CA017 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E3D78030434DC0A178C159B /* ClipboardMonitor.swift in Sources */,
+				CF9D73262DC74943A5A88E06 /* ClipboardMonitorTests.swift in Sources */,
+				CC53022B1D6A34B9CCAD8769 /* HotkeyManager.swift in Sources */,
+				563CDC5AA8D888D6C702C5D7 /* HotkingTests.swift in Sources */,
+				B53C178109396328F198D4C2 /* Preferences.swift in Sources */,
+				271DAFBCD9678E9C9E5E30C2 /* PreferencesTests.swift in Sources */,
+				D4E5C725663684A82701B187 /* TypingEngine.swift in Sources */,
+				452E148178A17F5E69748856 /* TypingEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +404,22 @@
 			};
 			name = Release;
 		};
+		B36CDB94123F3ADB10916D20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.humantypist.app.tests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		B55035D6E5C54E2ED30CF552 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -318,9 +436,34 @@
 			};
 			name = Release;
 		};
+		E6C4B5FC2752E0C8D8AF670F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.humantypist.app.tests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		039A28E65E487DC693BE04FE /* Build configuration list for PBXNativeTarget "HumanTypistTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6C4B5FC2752E0C8D8AF670F /* Debug */,
+				B36CDB94123F3ADB10916D20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		7A7B75A9F95A9380F4858202 /* Build configuration list for PBXNativeTarget "HumanTypist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

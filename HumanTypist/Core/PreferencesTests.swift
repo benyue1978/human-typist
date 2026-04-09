@@ -1,5 +1,4 @@
 import XCTest
-@testable import HumanTypist
 
 final class PreferencesTests: XCTestCase {
 
