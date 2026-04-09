@@ -45,7 +45,9 @@ final class TypingPanel: NSPanel {
     }
 
     private func setupUI() {
-        let container = NSView(frame: contentView!.bounds)
+        // Use content rect (excludes title bar) for layout
+        let contentAreaRect = contentView!.bounds
+        let container = NSView(frame: contentAreaRect)
         container.autoresizingMask = [.width, .height]
 
         tabSegmentedControl = NSSegmentedControl(labels: ["General", "Shortcuts", "Typing Params"], trackingMode: .selectOne, target: self, action: #selector(tabChanged))
@@ -64,8 +66,11 @@ final class TypingPanel: NSPanel {
 
         container.addSubview(tabSegmentedControl)
 
+        // Title bar height for macOS panel is typically 28pt, use standard title bar height constant
+        let titleBarHeight: CGFloat = 28
+
         NSLayoutConstraint.activate([
-            tabSegmentedControl.topAnchor.constraint(equalTo: container.topAnchor, constant: 12),
+            tabSegmentedControl.topAnchor.constraint(equalTo: container.topAnchor, constant: 36),
             tabSegmentedControl.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 12),
             tabSegmentedControl.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -12),
 
