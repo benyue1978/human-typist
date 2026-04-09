@@ -7,24 +7,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusBarController = StatusBarController()
 
-        HotkeyManager.shared.register(
+        let ok = HotkeyManager.shared.register(
             onStart: {
-                NSLog("[AppDelegate] onStart callback fired, isRunning=%@", "\(TypingEngine.shared.isRunning)")
                 let text = ClipboardMonitor.shared.readText() ?? ""
-                NSLog("[AppDelegate] clipboard text: %d chars", text.count)
-                guard !text.isEmpty else {
-                    NSLog("[AppDelegate] clipboard empty, skipping")
-                    return
-                }
+                guard !text.isEmpty else { return }
                 TypingEngine.shared.start(text: text)
             },
             onStop: {
                 TypingEngine.shared.stop()
-            },
-            onReload: {
-                // clipboard is re-read on next start
             }
         )
+
+        if !ok {
+            let alert = NSAlert()
+            alert.messageText = "Accessibility Permission Required"
+            alert.informativeText = "Human Typist needs Accessibility permission to detect hotkeys and type text. Please grant permission in System Settings > Privacy & Security > Accessibility, then relaunch the app."
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "Quit")
+            alert.runModal()
+            NSApp.terminate(nil)
+        }
     }
 
     func applicationWillTerminate(_ notification: Notification) {

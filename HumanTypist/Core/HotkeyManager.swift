@@ -12,27 +12,21 @@ final class HotkeyManager {
 
     var onStart: (() -> Void)?
     var onStop: (() -> Void)?
-    var onReload: (() -> Void)?
 
     private init() {}
 
+    @discardableResult
     func register(onStart: @escaping () -> Void,
-                   onStop: @escaping () -> Void,
-                   onReload: @escaping () -> Void) {
+                   onStop: @escaping () -> Void) -> Bool {
         self.onStart = onStart
         self.onStop = onStop
-        self.onReload = onReload
-
-        NSLog("[HotkeyManager] register() called")
 
         // First check/request Accessibility permission
         let options = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as String: true] as CFDictionary
         let trusted = AXIsProcessTrustedWithOptions(options)
-        NSLog("[HotkeyManager] AXIsProcessTrustedWithOptions: %@", "\(trusted)")
 
-        // Note: permission must be granted BEFORE this app launch, not just during this session
         if !trusted {
-            NSLog("[HotkeyManager] Accessibility permission NOT granted - CGEvent tap will likely fail")
+            return false
         }
 
         let eventMask = (1 << CGEventType.keyDown.rawValue)
@@ -52,16 +46,15 @@ final class HotkeyManager {
             },
             userInfo: refcon
         ) else {
-            NSLog("[HotkeyManager] CGEvent.tapCreate FAILED - Accessibility permission issue")
-            return
+            return false
         }
 
-        NSLog("[HotkeyManager] Event tap created successfully!")
         eventTap = tap
         runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0)
         CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: tap, enable: true)
         isRegistered = true
+        return true
     }
 
     private func handleEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent) {
@@ -73,11 +66,6 @@ final class HotkeyManager {
         let hasControl = flags.contains(.maskControl)
         let hasOption = flags.contains(.maskAlternate)
 
-        // Only log when Ctrl+Alt modifiers are present (reduces noise during typing)
-        if hasControl && hasOption {
-            NSLog("[HotkeyManager] KEY: keycode=%lld ctrl=%@ opt=%@", keyCode, "\(hasControl)", "\(hasOption)")
-        }
-
         guard hasControl && hasOption else { return }
 
         switch keyCode {
@@ -85,8 +73,6 @@ final class HotkeyManager {
             self.onStart?()
         case 0x1F, 0x01: // S = 31 or 1 (different keyboard layouts report different keycodes)
             self.onStop?()
-        case 0x0F: // R = 15 decimal
-            self.onReload?()
         default:
             break
         }

@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.moved-aside
+*.pbxuser
+
+# DerivedData
+DerivedData/
+
+# Build artifacts
+*.zip
+*.app
