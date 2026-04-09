@@ -8,7 +8,7 @@ final class PreferencesTests: XCTestCase {
     }
 
     func testWPMMinDefault() {
-        XCTAssertEqual(Preferences.shared.wpmMin, 25)
+        XCTAssertEqual(Preferences.shared.wpmMin, 100)
     }
 
     func testWPMMinSetGet() {
@@ -17,7 +17,7 @@ final class PreferencesTests: XCTestCase {
     }
 
     func testWPMMaxDefault() {
-        XCTAssertEqual(Preferences.shared.wpmMax, 90)
+        XCTAssertEqual(Preferences.shared.wpmMax, 200)
     }
 
     func testPauseAfterPunctDefault() {

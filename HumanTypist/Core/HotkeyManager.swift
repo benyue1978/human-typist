@@ -8,7 +8,7 @@ final class HotkeyManager {
 
     private var eventTap: CFMachPort?
     private var runLoopSource: CFRunLoopSource?
-    private var isRegistered = false
+    private(set) var isRegistered = false
 
     var onStart: (() -> Void)?
     var onStop: (() -> Void)?
@@ -23,12 +23,17 @@ final class HotkeyManager {
         self.onStop = onStop
         self.onReload = onReload
 
-        // Ctrl+Alt+P = keycode 0x35, modifiers: control + option
-        let startKey = KeyCombo(keyCode: 0x35, modifiers: 0x1100) // controlKey | optionKey
-        // Ctrl+Alt+S = keycode 0x01
-        let stopKey = KeyCombo(keyCode: 0x01, modifiers: 0x1100)
-        // Ctrl+Alt+R = keycode 0x0F
-        let reloadKey = KeyCombo(keyCode: 0x0F, modifiers: 0x1100)
+        NSLog("[HotkeyManager] register() called")
+
+        // First check/request Accessibility permission
+        let options = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as String: true] as CFDictionary
+        let trusted = AXIsProcessTrustedWithOptions(options)
+        NSLog("[HotkeyManager] AXIsProcessTrustedWithOptions: %@", "\(trusted)")
+
+        // Note: permission must be granted BEFORE this app launch, not just during this session
+        if !trusted {
+            NSLog("[HotkeyManager] Accessibility permission NOT granted - CGEvent tap will likely fail")
+        }
 
         let eventMask = (1 << CGEventType.keyDown.rawValue)
 
@@ -47,16 +52,15 @@ final class HotkeyManager {
             },
             userInfo: refcon
         ) else {
-            print("[HotkeyManager] CGEvent.tapCreate FAILED - need Accessibility permission")
+            NSLog("[HotkeyManager] CGEvent.tapCreate FAILED - Accessibility permission issue")
             return
         }
 
+        NSLog("[HotkeyManager] Event tap created successfully!")
         eventTap = tap
         runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0)
         CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: tap, enable: true)
-
-        print("[HotkeyManager] Event tap enabled successfully")
         isRegistered = true
     }
 
@@ -66,22 +70,25 @@ final class HotkeyManager {
         let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
         let flags = event.flags
 
-        // Check for Ctrl+Option modifiers
         let hasControl = flags.contains(.maskControl)
         let hasOption = flags.contains(.maskAlternate)
 
         guard hasControl && hasOption else { return }
 
-        print("[HotkeyManager] Key pressed: keycode=\(keyCode) ctrl=\(hasControl) opt=\(hasOption)")
+        NSLog("[HotkeyManager] Key pressed: keycode=%lld ctrl=%@ opt=%@", keyCode, "\(hasControl)", "\(hasOption)")
 
         switch keyCode {
-        case 0x35: // P
-            DispatchQueue.main.async { self.onStart?() }
-        case 0x01: // S
-            DispatchQueue.main.async { self.onStop?() }
-        case 0x0F: // R
-            DispatchQueue.main.async { self.onReload?() }
+        case 0x23: // P = 35 decimal
+            NSLog("[HotkeyManager] matched case 0x23 (P), calling onStart")
+            self.onStart?()
+        case 0x1F: // S = 31 decimal
+            NSLog("[HotkeyManager] matched case 0x1F (S), calling onStop")
+            self.onStop?()
+        case 0x0F: // R = 15 decimal
+            NSLog("[HotkeyManager] matched case 0x0F (R), calling onReload")
+            self.onReload?()
         default:
+            NSLog("[HotkeyManager] no match for keycode=%lld, falling through", keyCode)
             break
         }
     }
@@ -95,9 +102,4 @@ final class HotkeyManager {
         }
         isRegistered = false
     }
-}
-
-struct KeyCombo {
-    let keyCode: Int64
-    let modifiers: Int64
 }

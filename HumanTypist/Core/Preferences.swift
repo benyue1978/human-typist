@@ -30,8 +30,8 @@ final class Preferences {
 
     private func registerDefaults() {
         defaults.register(defaults: [
-            Keys.wpmMin: 25,
-            Keys.wpmMax: 90,
+            Keys.wpmMin: 100,
+            Keys.wpmMax: 200,
             Keys.burstSecondsMin: 1.0,
             Keys.burstSecondsMax: 6.0,
             Keys.charJitterMin: 0.0,

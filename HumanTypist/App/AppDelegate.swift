@@ -9,14 +9,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         HotkeyManager.shared.register(
             onStart: {
-                guard let text = ClipboardMonitor.shared.readText(), !text.isEmpty else { return }
+                NSLog("[AppDelegate] onStart callback fired, isRunning=%@", "\(TypingEngine.shared.isRunning)")
+                let text = ClipboardMonitor.shared.readText() ?? ""
+                NSLog("[AppDelegate] clipboard text: %d chars", text.count)
+                guard !text.isEmpty else {
+                    NSLog("[AppDelegate] clipboard empty, skipping")
+                    return
+                }
                 TypingEngine.shared.start(text: text)
             },
             onStop: {
                 TypingEngine.shared.stop()
             },
             onReload: {
-                // clipboard is read on start, nothing to reload
+                // clipboard is re-read on next start
             }
         )
     }
