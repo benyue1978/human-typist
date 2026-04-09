@@ -1,6 +1,10 @@
 # Human Typist
 
-A macOS menu bar app that types clipboard text into any text field with human-like timing.
+A macOS menu bar app that types clipboard text into any text field with human-like timing. So that you'll get this result
+
+<img width="290" height="169" alt="CleanShot 2026-04-09 at 19 56 10" src="https://github.com/user-attachments/assets/07a2c166-578d-4a10-844d-a647f1485a0b" />
+
+<img width="416" height="630" alt="CleanShot 2026-04-09 at 19 55 07" src="https://github.com/user-attachments/assets/0fa229cf-2b3d-4517-b933-fd4a798dbd0c" />
 
 ## Requirements
 
