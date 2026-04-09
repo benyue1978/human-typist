@@ -39,7 +39,8 @@ final class TypingPanel: NSPanel {
     }
 
     private func setupTabs() {
-        tabView = NSTabView(frame: contentView!.bounds)
+        let panelSize = contentRect(forFrameRect: frame).size
+        tabView = NSTabView(frame: NSRect(x: 0, y: 0, width: panelSize.width, height: panelSize.height))
         tabView.autoresizingMask = [.width, .height]
 
         let generalTab = NSTabViewItem(identifier: "general")
