@@ -34,8 +34,10 @@ final class HotkeyManager {
 
         var eventType = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: UInt32(kEventHotKeyPressed))
 
+        let eventTarget = GetEventDispatcherTarget()
+
         let status = InstallEventHandler(
-            GetApplicationEventTarget(),
+            eventTarget,
             { (_, event, _) -> OSStatus in
                 HotkeyManager.shared.handleHotkey(event)
                 return noErr
@@ -46,40 +48,47 @@ final class HotkeyManager {
             &eventHandler
         )
 
-        guard status == noErr else { return }
+        guard status == noErr else {
+            print("[HotkeyManager] InstallEventHandler failed: \(status)")
+            return
+        }
+        print("[HotkeyManager] EventHandler installed OK")
 
         // Ctrl+Alt+P = P keycode 0x35 (35), modifiers control+option
         var startHotkeyID = startKeyID
-        RegisterEventHotKey(
+        let startStatus = RegisterEventHotKey(
             0x35, // kVK_ANSI_P
             UInt32(controlKey | optionKey),
             startHotkeyID,
-            GetApplicationEventTarget(),
+            eventTarget,
             0,
             &hotkeyRefStart
         )
+        print("[HotkeyManager] RegisterEventHotKey P: \(startStatus)")
 
         // Ctrl+Alt+S = S keycode 0x01 (1), modifiers control+option
         var stopHotkeyID = stopKeyID
-        RegisterEventHotKey(
+        let stopStatus = RegisterEventHotKey(
             0x01, // kVK_ANSI_S
             UInt32(controlKey | optionKey),
             stopHotkeyID,
-            GetApplicationEventTarget(),
+            eventTarget,
             0,
             &hotkeyRefStop
         )
+        print("[HotkeyManager] RegisterEventHotKey S: \(stopStatus)")
 
         // Ctrl+Alt+R = R keycode 0x0F (15), modifiers control+option
         var reloadHotkeyID = reloadKeyID
-        RegisterEventHotKey(
+        let reloadStatus = RegisterEventHotKey(
             0x0F, // kVK_ANSI_R
             UInt32(controlKey | optionKey),
             reloadHotkeyID,
-            GetApplicationEventTarget(),
+            eventTarget,
             0,
             &hotkeyRefReload
         )
+        print("[HotkeyManager] RegisterEventHotKey R: \(reloadStatus)")
 
         isRegistered = true
     }
@@ -116,7 +125,12 @@ final class HotkeyManager {
             nil,
             &hotkeyID
         )
-        guard status == noErr else { return status }
+        guard status == noErr else {
+            print("[HotkeyManager] GetEventParameter failed: \(status)")
+            return status
+        }
+
+        print("[HotkeyManager] Hotkey fired, id: \(hotkeyID.id)")
 
         DispatchQueue.main.async {
             switch hotkeyID.id {
